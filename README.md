@@ -5,7 +5,8 @@ Primary Drivers
 Decrease in Temperature 
 Increase in Precipitation
 
-	Decreasing temperatures will influence DOC concentrations to receiving lake water bodies through a number of factors. 
+Decreasing temperatures will influence DOC concentrations to receiving lake water bodies through a number of factors. 
+
 1) temperature will determine vegetation composition. We will create a model to describe a change in vegetation from forest, shrub, grass, lichen to barerock. Along with these vegetation types, there are well documented carbon input rates and densities to soils. This gradient will result in a decrease in carbon inputs with elevation
 
 2) temperature will determine the residence time of carbon in soils. As temperature cool, the rate declines and more carbon accumulates. Trumbore 1996 et al (Science) have developed an equation to describe this relationship (Carbon inventory weighted turnover time = 138exp[0.11*T] ). This relationship creates an increase in soil carbon stocks with elevation until the reduced carbon inputs of lichen and bare rock result in a strong decline. 
