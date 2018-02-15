@@ -20,9 +20,8 @@ Evaporation
 Snow and seasonality
 ..
 ..
-
 #### Elevation null model of temperature, vegetation, soil carbon and DOC flux
-#### Brahney, Baron, Olesky, Rosen, ... 
+#### DOC Group: Baron, Brahney, Olesky, Rosen, others add here ... 
 #### February 2018
 
 
@@ -31,8 +30,8 @@ Landcov<-read.csv('Landcover.csv', header=TRUE) #could we should we model this w
 
 #constants
 elevation <-seq(200,3200,100)
-Cf<- 0.2514 #kg/m2/yr, carbon input rate to soils from forestest Plant Soil (2010) 337:151–165
-Cs<- 0.12  #kg/m2/yr, carbon input rate to soils form grasslands and shrub *citaions needed
+Cf<- 0.25 #kg/m2/yr, carbon input rate to soils from forestest Plant Soil (2010) 337:151–165
+Cs<- 0.19  #kg/m2/yr, carbon input rate to soils form grasslands and shrub Plant Soil (2010) 337:151–165
 Cl<- 0.009  #kg/m2/yr, carbon input rate to soils form lichen, Garnett and Bradwell 2010
 Cr <- 0 #kg/m2/yr, carbon input
 Cp <- 1 #mg/L, carbon input from precipitation. 
@@ -45,7 +44,12 @@ CarbonIn = (Landcov$forest/100*Cf) + (Landcov$shrub/100*Cs) + (Landcov$lichen/10
 TurnT = 138*exp(-0.11*MAT) #Weighted carbon turnover time from Trumbore et al 1996 in yr
 Runoff = (5.96*Landcov$forest)+(13.24*Landcov$shrub)+(Landcov$lichen*21.65)+(Landcov$bare*19.16) #runoff generated as a function of vegetation in L/m2
 SoilC = CarbonIn*TurnT #Soil carbon stocks in kg/m2
-DOCRunOff=SoilC/Runoff*1000 #run off in mg/L
+DOCRunoff=SoilC/Runoff*1000 #run off in mg/L
+DOCRunoff2 = 1.62 + (0.00784*SoilC) - (0.00296*Runoff) - (0.41*log(elevation)) #Sobek et al Model
 
+par(mfrow = c(2, 2))
 
-plot(elevation, DOCRunOff)
+plot(MAT, DOCRunoff)
+plot(elevation,DOCRunoff)
+plot(MAT, DOCRunoff2)
+plot(elevation,DOCRunoff2)
